@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.views import View
 
-# Create your views here.
+class JsonResponseView(View):
+    def get(self, request, *args, **kwargs):
+        data = {
+            'code': 200,
+            'message': 'hello from FE',
+        }
+        return JsonResponse(data)

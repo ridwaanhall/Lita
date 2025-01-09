@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'lita_fe.apps.LitaFeConfig',
+    'lita_be.apps.LitaBeConfig',
 ]
 
 MIDDLEWARE = [
