@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     
     'lita_fe.apps.LitaFeConfig',
     'lita_be.apps.LitaBeConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
