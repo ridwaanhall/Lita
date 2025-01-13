@@ -1,7 +1,7 @@
 {
     "builds": [
         {
-            "src": "MLBB/wsgi.py",
+            "src": "LITA/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -20,7 +20,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "MLBB/wsgi.py"
+            "dest": "LITA/wsgi.py"
         }
     ]
 }
