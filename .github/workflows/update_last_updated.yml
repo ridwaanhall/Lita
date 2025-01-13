@@ -15,12 +15,12 @@ jobs:
 
     - name: Update last_updated field
       run: |
-        sed -i "s/\"last_updated\": \".*\"/\"last_updated\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"/" path/to/your/file.py
+        sed -i "s/\"last_updated\": \".*\"/\"last_updated\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"/" LITA/views.py
 
     - name: Commit changes
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add path/to/your/file.py
+        git add LITA/views.py
         git commit -m "Update last_updated field"
         git push
