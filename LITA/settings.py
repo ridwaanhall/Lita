@@ -58,12 +58,14 @@ REFERER_KEY = config('REFERER_KEY')
 REFERER_VALUE = config('REFERER_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEVELOPMENT', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.vercel.app',
+    '.ridwaanhall.me',
+    '.ngoding.me',
 ]
 
 
