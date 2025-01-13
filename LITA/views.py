@@ -15,6 +15,6 @@ class BaseView(APIView):
                 "web": "/web/",
             },
             "status": "active",
-            "last_updated": "2025-01-13T20:57:00Z"
+            "last_updated": "2025-01-13T14:19:54Z"
         }
         return Response(data)
