@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,41 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i^_gui6$1nfz@67$4i4^-wjb3$m3pcw9(9my!0to##!_9o8&cw'
+SECRET_KEY = config('SECRET_KEY')
+
+URL_BASIC = config('URL_BASIC')
+URL_MAIN = config('URL_MAIN')
+
+APPPLAT_KEY = config('APPPLAT_KEY')
+APPPLAT_VALUE = config('APPPLAT_VALUE')
+DNT_KEY = config('DNT_KEY')
+DNT_VALUE = config('DNT_VALUE')
+L_APP_ID_KEY = config('L_APP_ID_KEY')
+L_APP_ID_VALUE = config('L_APP_ID_VALUE')
+L_APP_PLATFORM_KEY = config('L_APP_PLATFORM_KEY')
+L_APP_PLATFORM_VALUE = config('L_APP_PLATFORM_VALUE')
+L_LOCALE_KEY = config('L_LOCALE_KEY')
+L_LOCALE_VALUE = config('L_LOCALE_VALUE')
+L_NONCE_KEY = config('L_NONCE_KEY')
+L_NONCE_VALUE = config('L_NONCE_VALUE')
+L_SIGN_KEY = config('L_SIGN_KEY')
+L_SIGN_VALUE = config('L_SIGN_VALUE')
+L_TIMESTAMP_KEY = config('L_TIMESTAMP_KEY')
+L_TIMESTAMP_VALUE = config('L_TIMESTAMP_VALUE')
+L_TRACE_ID_KEY = config('L_TRACE_ID_KEY')
+L_TRACE_ID_VALUE = config('L_TRACE_ID_VALUE')
+L_USER_LOCALE_KEY = config('L_USER_LOCALE_KEY')
+L_USER_LOCALE_VALUE = config('L_USER_LOCALE_VALUE')
+L_USER_TOKEN_KEY = config('L_USER_TOKEN_KEY')
+L_USER_TOKEN_VALUE = config('L_USER_TOKEN_VALUE')
+L_USER_TOKEN_VALUE_V2 = config('L_USER_TOKEN_VALUE_V2')
+ORIGIN_KEY = config('ORIGIN_KEY')
+ORIGIN_VALUE = config('ORIGIN_VALUE')
+PROXYHEADER_KEY = config('PROXYHEADER_KEY')
+PROXYHEADER_VALUE = config('PROXYHEADER_VALUE')
+PROXYHEADER_VALUE_V2 = config('PROXYHEADER_VALUE_V2')
+REFERER_KEY = config('REFERER_KEY')
+REFERER_VALUE = config('REFERER_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
