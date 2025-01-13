@@ -23,4 +23,9 @@ jobs:
         git config --global user.email 'github-actions@github.com'
         git add LITA/views.py
         git commit -m "Update last_updated field"
-        git push
+
+    - name: Push changes
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git push https://github-actions:${{ secrets.GH_TOKEN }}@github.com/ridwaanhall/Lita.git
