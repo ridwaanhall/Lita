@@ -5,6 +5,6 @@ class JsonResponseView(APIView):
     def get(self, request, *args, **kwargs):
         data = {
             'code': 200,
-            'message': 'hello from BE',
+            'message': 'hello from backend',
         }
         return Response(data)
