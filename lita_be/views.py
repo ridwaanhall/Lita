@@ -933,18 +933,7 @@ class MomentHotSortListAPIView(BaseAPIView):
 
 class TestPlayerInskillBatchAPIView(BaseAPIView):
     def get(self, request):
-        gender = request.query_params.get('gender', '2')
-        level_ids = request.query_params.get('levelIds', '') # (rank: /api/skill/searchopts) -> 829, etc.
-        newbie = request.query_params.get('newBie', '0')
-        order = request.query_params.get('order', '') # desc, asc
-        page = request.query_params.get('page', '1')
-        position_ids = request.query_params.get('positionIds', '') # (role: /api/skill/searchopts) -> 1, etc.
-        rows = request.query_params.get('rows', '30')
-        skill_id = request.query_params.get('skillId', '1')
-        sort = request.query_params.get('sort', '') # auditTime, avgStar, price
-
-        url = f"{settings.URL_MAIN}/player/inskill/batch?gender={gender}&levelIds={level_ids}&newBie={newbie}&order={order}&page={page}&positionIds={position_ids}&rows={rows}&skillId={skill_id}&sort={sort}"
-        
+        url = f"{settings.URL_MAIN}/player/inskill/batch?gender=2&levelIds=&newBie=0&order=&page=1&positionIds=&rows=30&skillId=1&sort="
         headers = {
             "accept": "*/*",
             "accept-encoding": "gzip, deflate, br, zstd",
