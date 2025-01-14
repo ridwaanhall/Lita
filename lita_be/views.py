@@ -446,3 +446,32 @@ class MomentUserListAPIView(APIView):
             return Response(response.json(), status=status.HTTP_200_OK)
         else:
             return Response(response.text, status=response.status_code)
+
+class MomentHotSortListAPIView(APIView):
+    def get(self, request):
+        batch_no = request.query_params.get('batchNo', '0')
+        next_index = request.query_params.get('nextIndex', '0')
+        
+        url = f"{URL_MAIN}/moment/hotsort/list?batchNo={batch_no}&nextIndex={next_index}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "3s3HH9",
+            "l-sign": "d43267c65f228f5",
+            "l-timestamp": "1736828167855",
+            "l-trace-id": "1883084bbdd3f6e2d39d3f52109a6de3",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
