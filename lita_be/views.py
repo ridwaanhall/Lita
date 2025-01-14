@@ -39,7 +39,7 @@ class JsonResponseView(APIView):
                 },
                 "KolZone List API": {
                     "Description": "Fetches KolZone list based on gender and skillId.",
-                    "Endpoint": "/kolzone/list/",
+                    "Endpoint": "/kolZone/list/",
                     "Method": "GET",
                     "Query Parameters": {
                         "gender": {
@@ -56,7 +56,7 @@ class JsonResponseView(APIView):
                             "default": "-1"
                         }
                     },
-                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/kolzone/list/?gender=0&skillId=-1'"
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/kolZone/list/?gender=0&skillId=-1'"
                 },
                 "Player InSkills API": {
                     "Description": "Fetches player skills based on skillIds.",
