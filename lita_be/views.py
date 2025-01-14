@@ -751,7 +751,7 @@ class SkillSearchOptsAPIView(BaseAPIView):
 
 class PlayerInskillBatchAPIView(BaseAPIView):
     def get(self, request):
-        gender = request.query_params.get('gender', '0')
+        gender = request.query_params.get('gender', '2')
         level_ids = request.query_params.get('levelIds', '') # (rank: /api/skill/searchopts) -> 829, etc.
         newbie = request.query_params.get('newBie', '0')
         order = request.query_params.get('order', '') # desc, asc
