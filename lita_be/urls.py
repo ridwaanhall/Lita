@@ -18,4 +18,6 @@ urlpatterns = [
     path('player/received/rank/order/', views.PlayerReceivedRankOrderAPIView.as_view(), name='player-received-rank-order-api'),
     path('player/skill/comment/', views.PlayerSkillCommentAPIView.as_view(), name='player-skill-comment-api'),
     path('moment/user/list/', views.MomentUserListAPIView.as_view(), name='moment-user-list-api'),
+    
+    path('moment/hotsort/list/', views.MomentHotSortListAPIView.as_view(), name='moment-hotsort-list-api'),
 ]
