@@ -20,4 +20,7 @@ urlpatterns = [
     path('moment/user/list/', views.MomentUserListAPIView.as_view(), name='moment-user-list-api'),
     
     path('moment/hotsort/list/', views.MomentHotSortListAPIView.as_view(), name='moment-hotsort-list-api'),
+    
+    # ====================
+    path('test/', views.TestPlayerInskillBatchAPIView.as_view(), name='be_test'),
 ]

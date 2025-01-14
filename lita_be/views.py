@@ -928,3 +928,29 @@ class MomentHotSortListAPIView(BaseAPIView):
             settings.PROXYHEADER_KEY: settings.PROXYHEADER_VALUE_V4,
         })
         return self.get_response(url, headers)
+
+# =======================================
+
+class TestPlayerInskillBatchAPIView(BaseAPIView):
+    def get(self, request):
+        gender = request.query_params.get('gender', '2')
+        level_ids = request.query_params.get('levelIds', '') # (rank: /api/skill/searchopts) -> 829, etc.
+        newbie = request.query_params.get('newBie', '0')
+        order = request.query_params.get('order', '') # desc, asc
+        page = request.query_params.get('page', '1')
+        position_ids = request.query_params.get('positionIds', '') # (role: /api/skill/searchopts) -> 1, etc.
+        rows = request.query_params.get('rows', '30')
+        skill_id = request.query_params.get('skillId', '1')
+        sort = request.query_params.get('sort', '') # auditTime, avgStar, price, 
+
+        url = f"{settings.URL_MAIN}/player/inskill/batch?gender=2&levelIds=&newBie=0&order=&page=1&positionIds=&rows=30&skillId=1&sort="
+        headers = self.get_base_headers()
+        headers.update({
+            settings.L_NONCE_KEY: "tckVJP",
+            settings.L_SIGN_KEY: "ee21ddd29006d93",
+            settings.L_TIMESTAMP_KEY: "1736772658522",
+            settings.L_TRACE_ID_KEY: "5fc7d652e11a5d47fa7bf01846d6872e",
+            settings.L_USER_TOKEN_KEY: settings.L_USER_TOKEN_VALUE_V2,
+            settings.PROXYHEADER_KEY: settings.PROXYHEADER_VALUE_V2,
+        })
+        return self.get_response(url, headers)
