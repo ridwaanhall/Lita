@@ -32,11 +32,15 @@ L_USER_LOCALE_VALUE = settings.L_USER_LOCALE_VALUE
 L_USER_TOKEN_KEY = settings.L_USER_TOKEN_KEY
 L_USER_TOKEN_VALUE = settings.L_USER_TOKEN_VALUE
 L_USER_TOKEN_VALUE_V2 = settings.L_USER_TOKEN_VALUE_V2
+L_USER_TOKEN_VALUE_V3 = settings.L_USER_TOKEN_VALUE_V3
+L_USER_TOKEN_VALUE_V4 = settings.L_USER_TOKEN_VALUE_V4
 ORIGIN_KEY = settings.ORIGIN_KEY
 ORIGIN_VALUE = settings.ORIGIN_VALUE
 PROXYHEADER_KEY = settings.PROXYHEADER_KEY
 PROXYHEADER_VALUE = settings.PROXYHEADER_VALUE
 PROXYHEADER_VALUE_V2 = settings.PROXYHEADER_VALUE_V2
+PROXYHEADER_VALUE_V3 = settings.PROXYHEADER_VALUE_V3
+PROXYHEADER_VALUE_V4 = settings.PROXYHEADER_VALUE_V4
 REFERER_KEY = settings.REFERER_KEY
 REFERER_VALUE = settings.REFERER_VALUE
 
@@ -227,21 +231,213 @@ class PlayerDetailAPIView(APIView):
         if not player_no:
             return Response({'error': 'The "no" parameter is required.'}, status=status.HTTP_400_BAD_REQUEST)
         
-        url = f"https://h-api.lita.game/funbit/v2/player/detail/g3?no={player_no}"
+        url = f"{URL_MAIN}/player/detail/g3?no={player_no}"
         headers = {
             APPPLAT_KEY: APPPLAT_VALUE,
             DNT_KEY: DNT_VALUE,
             L_APP_ID_KEY: L_APP_ID_VALUE,
             L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
             L_LOCALE_KEY: L_LOCALE_VALUE,
-            "l-nonce": "YNjAz1",
-            "l-sign": "f091b23e7748d85",
-            "l-timestamp": "1736775379180",
-            "l-trace-id": "cf80d2cd8e741a670f715608e6cc7e3a",
+            "l-nonce": "g5PcXV",
+            "l-sign": "ef54f0d8c6dc953",
+            "l-timestamp": "1736824456578",
+            "l-trace-id": "d1bddf50f05c8a1315750abd8783a8dc",
             L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
-            "l-user-token": "DeHujIL76cSdXl+RD0+EDEAZEZu+gXhk5eBuXBzgxMe19nv8pngXjnhY1nVXyWaRo3JRYtXmgyLUfb3Sq15heAvy07uiB0GwtcgWeCoTg58=",
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V3,
             ORIGIN_KEY: ORIGIN_VALUE,
-            "proxyheader": "eyJjaGVjayI6IkIzQTc4RkREMzA2NDZBRUUzNzkwNDBDNDdFQUNFMENBIiwidGltZSI6MTczNjc3NTM2NjEzOSwidXNlckxvY2FsZSI6ImluLUlEIiwidmVyc2lvbiI6IjIuMCJ9",
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V3,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
+
+class PlayerReceivedGiftAPIView(APIView):
+    def get(self, request):
+        player_id = request.query_params.get('id')
+        
+        if not player_id:
+            return Response({'error': 'The "id" parameter is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        url = f"{URL_MAIN}/player/received/gift?id={player_id}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "qfPAWO",
+            "l-sign": "55bbb61e3f23110",
+            "l-timestamp": "1736824457586",
+            "l-trace-id": "2eef901980ee04c1ddb3b71d36ef6377",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
+
+class PlayerReceivedRankGiftAPIView(APIView):
+    def get(self, request):
+        player_id = request.query_params.get('id')
+        
+        if not player_id:
+            return Response({'error': 'The "id" parameter is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        url = f"{URL_MAIN}/player/received/rank/gift?id={player_id}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "6Serv9",
+            "l-sign": "716d2ac70a158a7",
+            "l-timestamp": "1736826174481",
+            "l-trace-id": "153213d7e144c8f933ef2c94d1667617",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
+
+class PlayerReceivedRankTotalAPIView(APIView):
+    def get(self, request):
+        player_id = request.query_params.get('id')
+        
+        if not player_id:
+            return Response({'error': 'The "id" parameter is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        url = f"{URL_MAIN}/player/received/rank/total?id={player_id}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "K3HO3X",
+            "l-sign": "13ed7fff4f041bb",
+            "l-timestamp": "1736824457587",
+            "l-trace-id": "2861f2c69b248d7a25616eddcc340beb",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
+
+class PlayerReceivedRankOrderAPIView(APIView):
+    def get(self, request):
+        player_id = request.query_params.get('id')
+        
+        if not player_id:
+            return Response({'error': 'The "id" parameter is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        url = f"{URL_MAIN}/player/received/rank/order?id={player_id}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "EKBbCe",
+            "l-sign": "2d2400f267608d6",
+            "l-timestamp": "1736826512143",
+            "l-trace-id": "c42bae6df6183f5d70380f217d448419",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
+
+class PlayerSkillCommentAPIView(APIView):
+    def get(self, request):
+        skill_id = request.query_params.get('skillId')
+        user_id = request.query_params.get('userId')
+        
+        if not skill_id or not user_id:
+            return Response({'error': 'The "skillId" and "userId" parameters are required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        page = request.query_params.get('page', '1')
+        rows = request.query_params.get('rows', '5')
+        
+        url = f"{URL_MAIN}/player/skill/comment?skillId={skill_id}&userId={user_id}&page={page}&rows={rows}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "zRlBSH",
+            "l-sign": "6d2b22a391a8946",
+            "l-timestamp": "1736824457586",
+            "l-trace-id": "eb635dd2f5a2a2a3e9b2ffd09e2b8d34",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
+            REFERER_KEY: REFERER_VALUE,
+        }
+
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return Response(response.json(), status=status.HTTP_200_OK)
+        else:
+            return Response(response.text, status=response.status_code)
+
+class MomentUserListAPIView(APIView):
+    def get(self, request):
+        author_id = request.query_params.get('authorId')
+        
+        if not author_id:
+            return Response({'error': 'The "authorId" parameter is required.'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        moment_id = request.query_params.get('momentId', '0')
+        
+        url = f"{URL_MAIN}/moment/user/list?authorId={author_id}&momentId={moment_id}"
+        headers = {
+            APPPLAT_KEY: APPPLAT_VALUE,
+            DNT_KEY: DNT_VALUE,
+            L_APP_ID_KEY: L_APP_ID_VALUE,
+            L_APP_PLATFORM_KEY: L_APP_PLATFORM_VALUE,
+            L_LOCALE_KEY: L_LOCALE_VALUE,
+            "l-nonce": "uc7zQD",
+            "l-sign": "14981746a50abab",
+            "l-timestamp": "1736825596428",
+            "l-trace-id": "242dfc1b2c70a4ed3fb2e31386475ec4",
+            L_USER_LOCALE_KEY: L_USER_LOCALE_VALUE,
+            L_USER_TOKEN_KEY: L_USER_TOKEN_VALUE_V4,
+            ORIGIN_KEY: ORIGIN_VALUE,
+            PROXYHEADER_KEY: PROXYHEADER_VALUE_V4,
             REFERER_KEY: REFERER_VALUE,
         }
 
