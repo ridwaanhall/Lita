@@ -941,16 +941,41 @@ class TestPlayerInskillBatchAPIView(BaseAPIView):
         position_ids = request.query_params.get('positionIds', '') # (role: /api/skill/searchopts) -> 1, etc.
         rows = request.query_params.get('rows', '30')
         skill_id = request.query_params.get('skillId', '1')
-        sort = request.query_params.get('sort', '') # auditTime, avgStar, price, 
+        sort = request.query_params.get('sort', '') # auditTime, avgStar, price
 
-        url = f"{settings.URL_MAIN}/player/inskill/batch?gender=2&levelIds=&newBie=0&order=&page=1&positionIds=&rows=30&skillId=1&sort="
-        headers = self.get_base_headers()
-        headers.update({
-            settings.L_NONCE_KEY: "tckVJP",
-            settings.L_SIGN_KEY: "ee21ddd29006d93",
-            settings.L_TIMESTAMP_KEY: "1736772658522",
-            settings.L_TRACE_ID_KEY: "5fc7d652e11a5d47fa7bf01846d6872e",
-            settings.L_USER_TOKEN_KEY: settings.L_USER_TOKEN_VALUE_V2,
-            settings.PROXYHEADER_KEY: settings.PROXYHEADER_VALUE_V2,
-        })
+        url = f"{settings.URL_MAIN}/player/inskill/batch?gender={gender}&levelIds={level_ids}&newBie={newbie}&order={order}&page={page}&positionIds={position_ids}&rows={rows}&skillId={skill_id}&sort={sort}"
+        
+        headers = {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br, zstd",
+            "accept-language": "en-US,en;q=0.9,mt;q=0.8",
+            "appplat": "Web",
+            "appversion": "2.0.0",
+            "dnt": "1",
+            "l-app-id": "Lita",
+            "l-app-platform": "3",
+            "l-locale": "in",
+            "l-nonce": "wFGIKn",
+            "l-sign": "0aea3ef2f48b5ed",
+            "l-timestamp": "1736837371643",
+            "l-trace-id": "9803cbd71ac9a62d581ef631ae5627ea",
+            "l-user-locale": "in",
+            "l-user-token": "DeHujIL76cSdXl+RD0+EDEAZEZu+gXhk5eBuXBzgxMe19nv8pngXjnhY1nVXyWaRyvxUQCMP1+iFaCjnbOk/iAvy07uiB0GwtcgWeCoTg58=",
+            "locale": "in",
+            "origin": "https://www.lita.game",
+            "priority": "u=1, i",
+            "proxyheader": "eyJjaGVjayI6IjRBNEEyMjcwQ0M1NDg2RDhDMjBCNzI2NkEwNjVGMUIwIiwidGltZSI6MTczNjgzNjE3NzY0NywidXNlckxvY2FsZSI6ImluLUlEIiwidmVyc2lvbiI6IjIuMCJ9",
+            "referer": "https://www.lita.game/",
+            "sec-ch-ua": "\"Microsoft Edge\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-site",
+            "shumeideviceid": "4a9249c3-de79-420a-ba4a-e0391ee206e4",
+            "subappplat": "pc",
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0",
+            "userlocale": "in"
+        }
+        
         return self.get_response(url, headers)
