@@ -27,8 +27,278 @@ class BaseAPIView(APIView):
 class JsonResponseView(APIView):
     def get(self, request, *args, **kwargs):
         data = {
-            'code': 200,
-            'message': 'hello from backend',
+            "API Documentation": {
+                "Author": "ridwaanhall",
+                "Version": "1.0.0",
+                "Last Update": "2025-01-14",
+                "Skill API": {
+                    "Description": "Fetches skill data.",
+                    "Endpoint": "/skill/",
+                    "Method": "GET",
+                    "Example Usage": "curl -X GET https://lita-user-data-id.vercel.app/api/skill/"
+                },
+                "KolZone List API": {
+                    "Description": "Fetches KolZone list based on gender and skillId.",
+                    "Endpoint": "/kolzone/list/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "gender": {
+                            "description": "Gender filter",
+                            "options": {
+                                "0": "all",
+                                "1": "boy",
+                                "2": "girl"
+                            },
+                            "default": "0"
+                        },
+                        "skillId": {
+                            "description": "Skill ID filter",
+                            "default": "-1"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/kolzone/list/?gender=0&skillId=-1'"
+                },
+                "Player InSkills API": {
+                    "Description": "Fetches player skills based on skillIds.",
+                    "Endpoint": "/player/inskills/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "skillIds": {
+                            "description": "Comma-separated list of skill IDs",
+                            "options": {
+                                "1": "",
+                                "20": "",
+                                "3": "",
+                                "2": "",
+                                "167": "",
+                                "100": "",
+                                "139": "",
+                                "90": "",
+                                "22": "",
+                                "21": "",
+                                "18": "",
+                                "69": "",
+                                "23": "",
+                                "87": "",
+                                "10": "",
+                                "65": "",
+                                "160": "",
+                                "89": "",
+                                "60": "",
+                                "122": "",
+                                "102": "",
+                                "103": "",
+                                "159": "",
+                                "109": "",
+                                "113": ""
+                            },
+                            "default": "1,20,3,2,167,100,139,90,22,21,18,69,23,87,10,65,160,89,60,122,102,103,159,109,113"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/inskills/?skillIds=1,20'"
+                },
+                "Player Recommend Batch API": {
+                    "Description": "Fetches recommended players in batches.",
+                    "Endpoint": "/player/recommend/batch/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "page": {
+                            "description": "Page number",
+                            "default": "1"
+                        },
+                        "rows": {
+                            "description": "Number of rows per page",
+                            "default": "10"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/recommend/batch/?page=1&rows=10'"
+                },
+                "Skill Search Options API": {
+                    "Description": "Fetches search options for skills.",
+                    "Endpoint": "/skill/searchopts/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "skillId": {
+                            "description": "Skill ID",
+                            "default": "1"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/skill/searchopts/?skillId=1'"
+                },
+                "Player Inskill Batch API": {
+                    "Description": "Fetches players based on multiple criteria.",
+                    "Endpoint": "/player/inskill/batch/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "gender": {
+                            "description": "Gender filter",
+                            "options": {
+                                "0": "all",
+                                "1": "boy",
+                                "2": "girl"
+                            }
+                        },
+                        "levelIds": {
+                            "description": "Comma-separated list of level IDs",
+                            "default": ""
+                        },
+                        "newBie": {
+                            "description": "Newbie filter",
+                            "default": "0"
+                        },
+                        "order": {
+                            "description": "Order",
+                            "default": "",
+                            "options": {
+                                "desc": "descending",
+                                "asc": "ascending"
+                            }
+                        },
+                        "page": {
+                            "description": "Page number",
+                            "default": "1"
+                        },
+                        "positionIds": {
+                            "description": "Comma-separated list of position IDs",
+                            "default": ""
+                        },
+                        "rows": {
+                            "description": "Number of rows per page",
+                            "default": "30"
+                        },
+                        "skillId": {
+                            "description": "Skill ID",
+                            "default": "1"
+                        },
+                        "sort": {
+                            "description": "Sort criteria",
+                            "default": "",
+                            "options": {
+                                "auditTime": "audit time",
+                                "avgStar": "average star",
+                                "price": "price"
+                            }
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/inskill/batch/?gender=0&levelIds=&newBie=0&order=&page=1&positionIds=&rows=30&skillId=1&sort='"
+                },
+                "Player Detail API": {
+                    "Description": "Fetches player details based on player number.",
+                    "Endpoint": "/player/detail/g3/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "no": {
+                            "description": "Player number",
+                            "required": true
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/detail/g3/?no=12345'"
+                },
+                "Player Received Gift API": {
+                    "Description": "Fetches received gifts for a player.",
+                    "Endpoint": "/player/received/gift/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "id": {
+                            "description": "Player ID",
+                            "required": true
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/gift/?id=12345'"
+                },
+                "Player Received Rank Gift API": {
+                    "Description": "Fetches rank gifts received by a player.",
+                    "Endpoint": "/player/received/rank/gift/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "id": {
+                            "description": "Player ID",
+                            "required": true
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/rank/gift/?id=12345'"
+                },
+                "Player Received Rank Total API": {
+                    "Description": "Fetches total rank received by a player.",
+                    "Endpoint": "/player/received/rank/total/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "id": {
+                            "description": "Player ID",
+                            "required": true
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/rank/total/?id=12345'"
+                },
+                "Player Received Rank Order API": {
+                    "Description": "Fetches rank orders received by a player.",
+                    "Endpoint": "/player/received/rank/order/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "id": {
+                            "description": "Player ID",
+                            "required": true
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/rank/order/?id=12345'"
+                },
+                "Player Skill Comment API": {
+                    "Description": "Fetches comments for a skill of a player.",
+                    "Endpoint": "/player/skill/comment/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "skillId": {
+                            "description": "Skill ID",
+                            "required": true
+                        },
+                        "userId": {
+                            "description": "User ID",
+                            "required": true
+                        },
+                        "page": {
+                            "description": "Page number",
+                            "default": "1"
+                        },
+                        "rows": {
+                            "description": "Number of rows per page",
+                            "default": "5"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/skill/comment/?skillId=1&userId=12345&page=1&rows=5'"
+                },
+                "Moment User List API": {
+                    "Description": "Fetches user moments based on authorId and momentId.",
+                    "Endpoint": "/moment/user/list/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "authorId": {
+                            "description": "Author ID",
+                            "required": true
+                        },
+                        "momentId": {
+                            "description": "Moment ID",
+                            "default": "0"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/moment/user/list/?authorId=12345&momentId=0'"
+                },
+                "Moment HotSort List API": {
+                    "Description": "Fetches hot sorted moments.",
+                    "Endpoint": "/moment/hotsort/list/",
+                    "Method": "GET",
+                    "Query Parameters": {
+                        "batchNo": {
+                            "description": "Batch number",
+                            "default": "0"
+                        },
+                        "nextIndex": {
+                            "description": "Next index",
+                            "default": "0"
+                        }
+                    },
+                    "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/moment/hotsort/list/?batchNo=0&nextIndex=0'"
+                }
+            }
         }
         return Response(data)
 
