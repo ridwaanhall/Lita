@@ -122,5 +122,5 @@ dmypy.json
 cython_debug/
 
 # add by ridwaanhall
-date_convert/
+experiment/
 static/
