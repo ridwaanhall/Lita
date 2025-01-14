@@ -189,7 +189,7 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "no": {
                             "description": "Player number",
-                            "required": true
+                            "required": "true"
                         }
                     },
                     "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/detail/g3/?no=12345'"
@@ -201,7 +201,7 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "id": {
                             "description": "Player ID",
-                            "required": true
+                            "required": "true"
                         }
                     },
                     "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/gift/?id=12345'"
@@ -213,7 +213,7 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "id": {
                             "description": "Player ID",
-                            "required": true
+                            "required": "true"
                         }
                     },
                     "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/rank/gift/?id=12345'"
@@ -225,7 +225,7 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "id": {
                             "description": "Player ID",
-                            "required": true
+                            "required": "true"
                         }
                     },
                     "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/rank/total/?id=12345'"
@@ -237,7 +237,7 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "id": {
                             "description": "Player ID",
-                            "required": true
+                            "required": "true"
                         }
                     },
                     "Example Usage": "curl -X GET 'https://lita-user-data-id.vercel.app/api/player/received/rank/order/?id=12345'"
@@ -249,11 +249,11 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "skillId": {
                             "description": "Skill ID",
-                            "required": true
+                            "required": "true"
                         },
                         "userId": {
                             "description": "User ID",
-                            "required": true
+                            "required": "true"
                         },
                         "page": {
                             "description": "Page number",
@@ -273,7 +273,7 @@ class JsonResponseView(APIView):
                     "Query Parameters": {
                         "authorId": {
                             "description": "Author ID",
-                            "required": true
+                            "required": "true"
                         },
                         "momentId": {
                             "description": "Moment ID",
